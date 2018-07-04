@@ -9,3 +9,4 @@
    * In class
      * Create Github ID 
      * Create new file "README.md" 
+   * At home
