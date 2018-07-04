@@ -5,7 +5,7 @@
   我是何配瑜，就讀政治大學資科系。第一次接觸R語言以及Github，請多多指教。
   
 # 課程
-## week1
+### week1
    * In class
      * Create Github ID 
      * Create new file "README.md" 
