@@ -7,8 +7,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## CM
-## 2018年7月1日
+### CM
+### 2018年7月4日
 
 #INTRO
 這是我的作業XDD
@@ -16,6 +16,20 @@ knitr::opts_chunk$set(echo = TRUE)
 * 運算
 * 數字
     + 換行
+    
+##運算
+四則運算
+
+```{r}
+2 + 2 
+```
+
+```{r}
+dim(iris)
+```
+
+
+
 
 
 
