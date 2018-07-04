@@ -9,5 +9,6 @@
    * In class
      * Create Github ID 
      * Create new file "README.md" 
-     * Create RMarkdown file [r markdown](https://pd1921.github.io/CSX_RProject_2018/week1/class/hw1.html)
+     * Create RMarkdown file 
+     [r markdown](https://pd1921.github.io/CSX_RProject_2018/week1/class/hw1.html)
    * At home
