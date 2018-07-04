@@ -11,3 +11,5 @@
      * Create new file "README.md" 
      * Finish [RMarkdown file](https://pd1921.github.io/CSX_RProject_2018/week1/class/hw1.html)
    * At home
+     * Finish datacmap R CH1, CH2
+     
