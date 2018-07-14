@@ -1,0 +1,43 @@
+---
+title: "task1"
+output: html_document
+---
+
+##2018.07.15
+
+```{r}
+library(ggplot2)
+cars
+```
+
+```{r}
+ggplot(data = cars, aes(speed, dist))+
+  geom_point()
+```
+
+```{r}
+ChickWeight
+```
+
+```{r}
+ggplot(data = ChickWeight, aes(x=Diet))+
+  geom_bar(fill="lightblue", colour = "black")
+```
+
+```{r}
+trees
+```
+
+```{r}
+ggplot(data = trees, aes(Girth, Height))+
+  geom_point()
+```
+
+```{r}
+rock
+```
+
+```{r}
+ggplot(data = rock, aes(area, perm))+
+  geom_point()
+```
