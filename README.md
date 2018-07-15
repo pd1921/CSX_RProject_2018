@@ -14,8 +14,9 @@
      * Finish datacmap R-語言導論 CH1, CH2
      
 ### week2
-    * In class
+  * In class
+    (Go to the summer camp)
+  * At home
+    * Finish [task1](https://github.com/pd1921/CSX_RProject_2018/blob/master/week2/task1/task1.html)
     
-    * At home
-      * Finish [task1](https://github.com/pd1921/CSX_RProject_2018/blob/master/week2/task1/task1.html)
       
