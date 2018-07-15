@@ -13,8 +13,9 @@ ggplot(data = trees, aes(Girth, Height))+
   geom_point()
 
 
-rock
-ggplot(data = rock, aes(area, perm))+
+BOD
+ggplot(data=BOD, aes(x=Time, y=demand, group=1))+
+  geom_line(linetype = "dashed")+
   geom_point()
 
 

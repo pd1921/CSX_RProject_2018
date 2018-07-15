@@ -5,6 +5,7 @@ output: html_document
 
 ##2018.07.15
 
+###Points
 ```{r}
 library(ggplot2)
 cars
@@ -15,6 +16,8 @@ ggplot(data = cars, aes(speed, dist))+
   geom_point()
 ```
 
+###Line Bars
+
 ```{r}
 ChickWeight
 ```
@@ -24,6 +27,7 @@ ggplot(data = ChickWeight, aes(x=Diet))+
   geom_bar(fill="lightblue", colour = "black")
 ```
 
+###Points
 ```{r}
 trees
 ```
@@ -33,11 +37,13 @@ ggplot(data = trees, aes(Girth, Height))+
   geom_point()
 ```
 
+###Line
 ```{r}
-rock
+BOD
 ```
 
 ```{r}
-ggplot(data = rock, aes(area, perm))+
-  geom_point()
+ggplot(data=BOD, aes(x=Time, y=demand, group=1))+
+ geom_line(linetype = "dashed")+
+ geom_point()
 ```
