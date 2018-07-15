@@ -17,6 +17,6 @@
   * In class
     (Go to the summer camp)
   * At home
-    * Finish [task1](https://github.com/pd1921/CSX_RProject_2018/blob/master/week2/task1/task1.html)
+    * Finish [task1](https://pd1921.github.io/CSX_RProject_2018/week2/task1/task1.html)
     
       
