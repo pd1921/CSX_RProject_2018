@@ -2,11 +2,12 @@
 title: "JapDrama"
 output: html_document
 ---
-#Text Mining
+# Text Mining
 
-###2018.07.17
+### 2018.07.17
 
-##網路爬蟲
+## 網路爬蟲
+
 ```{r}
 source('pttTestFunction.R')
 
@@ -20,7 +21,7 @@ rm(list=ls(all.names = TRUE))
 
 ```
 
-##文本清理
+## 文本清理
 ```{r}
 rm(list=ls(all.names = TRUE))
 library(NLP)
@@ -123,7 +124,7 @@ docs <- tm_map(docs, removeNumbers)
 docs <- tm_map(docs, stripWhitespace)
 ```
 
-##詞頻矩陣
+## 詞頻矩陣
 ```{r}
 mixseg = worker()
 jieba_tokenizer=function(d){
@@ -136,7 +137,7 @@ library(knitr)
 kable(head(freqFrame), format = "markdown")
 ```
 
-##文字雲
+## 文字雲
 ```{r}
 wordcloud(freqFrame$Var1,freqFrame$Freq,
           scale=c(5,0.1),min.freq=50,max.words=150,
@@ -146,4 +147,4 @@ wordcloud(freqFrame$Var1,freqFrame$Freq,
           fixed.asp=TRUE)
 ```
 <br>
-###可以看出今年的日劇中，日版版流星花園(花過天晴)中的男主角『天馬」，討論度非常高。
+### 可以看出今年的日劇中，日版版流星花園(花過天晴)中的男主角『天馬」，討論度非常高。
