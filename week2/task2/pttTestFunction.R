@@ -22,3 +22,4 @@ pttTestFunction <- function(URL, filename)
   write.table(allText, filename) 
   #close(out) 
 }
+
