@@ -147,4 +147,5 @@ wordcloud(freqFrame$Var1,freqFrame$Freq,
           fixed.asp=TRUE)
 ```
 <br>
+
 ### 可以看出今年的日劇中，日版版流星花園(花過天晴)中的男主角『天馬」，討論度非常高。
