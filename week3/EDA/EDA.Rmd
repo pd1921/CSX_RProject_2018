@@ -1,0 +1,59 @@
+---
+title: "EDA"
+output: html_document
+---
+# Exploring the Titanic Dataset
+## Data from: https://www.kaggle.com/mrisdal/exploring-survival-on-the-titanic
+
+### Load Packages
+```{r, message=FALSE}
+library('ggplot2') # visualization
+library('ggthemes') # visualization
+library('scales') # visualization
+library('dplyr') # data manipulation
+library('mice') # imputation
+library('randomForest') # classification algorithm
+```
+
+### Load Data
+  * 利用 read.csv() 讀取檔案，其中可以相對位址讀取，因此RMD必須存在正確位址
+  * 可以用 bind_rows() 合併兩個表格資料，但要先 install.packages("dplyr")
+  * 最後印出資料，可以更清楚的閱讀
+```{r}
+train <- read.csv('./Data/train.csv', stringsAsFactors = F)
+test  <- read.csv('./Data/test.csv', stringsAsFactors = F)
+# 讀取資料
+
+full  <- bind_rows(train, test)
+# 合併資料
+
+str(full)
+# 印出資料
+```
+
+### About Names
+  * gsub(pattern, replacement, x) 來自grep套件，其中，原作者以 '' 取代了 full$Name 中的標點符號，留下稱謂的部分，並將資料轉給 full$Title
+  * 以 table() 製表，顯示以性別以及稱呼作為區分的表格。
+```{r}
+# Grab title from passenger names
+full$Title <- gsub('(.*, )|(\\..*)', '', full$Name)
+
+# Show title counts by sex
+table(full$Sex, full$Title)
+```
+
+  * 
+```{r}
+# Titles with very low cell counts to be combined to "rare" level
+rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', 
+                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')
+
+# Also reassign mlle, ms, and mme accordingly
+full$Title[full$Title == 'Mlle']        <- 'Miss' 
+full$Title[full$Title == 'Ms']          <- 'Miss'
+full$Title[full$Title == 'Mme']         <- 'Mrs' 
+full$Title[full$Title %in% rare_title]  <- 'Rare Title'
+
+# Show title counts by sex again
+table(full$Sex, full$Title)
+```
