@@ -42,6 +42,7 @@ full$Title <- gsub('(.*, )|(\\..*)', '', full$Name)
 table(full$Sex, full$Title)
 ```
 <br>
+
   * 將稱謂中比較少見的稱謂，簡化為 Rare Title
 ```{r}
 # Titles with very low cell counts to be combined to "rare" level
@@ -64,7 +65,8 @@ table(full$Sex, full$Title)
 full$Surname <- sapply(full$Name,  
                       function(x) strsplit(x, split = '[,.]')[[1]][1])
 ```
-<br><br>
+<br>
+
 ### Family
   * 計算家庭大小
 ```{r}
@@ -73,6 +75,7 @@ full$Fsize <- full$SibSp + full$Parch + 1
 full$Family <- paste(full$Surname, full$Fsize, sep='_')
 ```
 <br>
+
   * 利用 ggplot 畫出長條圖，用以表達存活人數以及家庭大小的關係
 ```{r}
 ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +
@@ -81,4 +84,15 @@ ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +
   labs(x = 'Family Size') +
   theme_few()
 ```
+<br>
 
+  * 依人口數制定家庭大小，並以 'singletion', 'small', 'large'
+  * 用圖表畫出存活比例
+```{r}
+full$FsizeD[full$Fsize == 1] <- 'singleton'
+full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'
+full$FsizeD[full$Fsize > 4] <- 'large'
+
+mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)
+```
+<br>
