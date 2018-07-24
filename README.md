@@ -25,5 +25,6 @@
     * [EDA Note](https://pd1921.github.io/CSX_RProject_2018/week3/EDA/EDA.html)
    
   * At home
+    * [TFIDF](https://pd1921.github.io/CSX_RProject_2018/week3/TFIDF/TFIDF.html)
     * [PCA](https://pd1921.github.io/CSX_RProject_2018/week3/TFIDF/PCA.html)
   
