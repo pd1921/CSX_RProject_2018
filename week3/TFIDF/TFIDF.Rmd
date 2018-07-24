@@ -18,8 +18,8 @@ library(tm)
 
 ```{r}
 source('pttTestFunction.R')
-id = c(7450:7455)
-URL = paste0("https://www.ptt.cc/bbs/WomenTalk/index", id, ".html")
+id = c(6150:6153)
+URL = paste0("https://www.ptt.cc/bbs/NBA/index", id, ".html")
 #filename = paste0(id, ".txt")
 #pttTestFunction(URL[1], filename[1])
 #mapply(pttTestFunction, 
@@ -27,9 +27,9 @@ URL = paste0("https://www.ptt.cc/bbs/WomenTalk/index", id, ".html")
 ```
 
 ```{r}
-from <- 7450
-to   <- 7455
-prefix = "https://www.ptt.cc/bbs/WomenTalk/index"
+from <- 6150
+to   <- 6153
+prefix = "https://www.ptt.cc/bbs/NBA/index"
 
 data <- list()
 for( id in c(from:to) )
@@ -242,10 +242,10 @@ kable(tail(AllTop))
 ```
 
 ```{r}
-filenames = as.array(paste0("./ptt/",colnames(doc.tfidf)[2:(n+1)],".txt"))
+filenames = as.array(paste0("./DATA/",colnames(doc.tfidf)[2:(n+1)],".txt"))
 sizeResult = apply(filenames, 1, file.size) / 1024
 showSize = data.frame(colnames(doc.tfidf)[2:(n+1)], sizeResult)
 names(showSize) = c("hour", "size_KB")
-library(ggplot2)
+
 ggplot(showSize, aes(x = hour, y = size_KB)) + geom_bar(stat="identity")
 ```
