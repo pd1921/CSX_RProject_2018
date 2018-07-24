@@ -20,4 +20,8 @@
     * Finish [task1](https://pd1921.github.io/CSX_RProject_2018/week2/task1/task1.html)
     * Finish [task2](https://pd1921.github.io/CSX_RProject_2018/week2/task2/task2.html)
     
-      
+### week3
+  * In class
+    * [EDA](https://pd1921.github.io/CSX_RProject_2018/week3/EDA/EDA.html)
+  * At home
+  
