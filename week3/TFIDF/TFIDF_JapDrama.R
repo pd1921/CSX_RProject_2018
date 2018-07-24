@@ -38,7 +38,6 @@ getdoc <- function(url){
   name <- paste0('./DATA/', hour, ".txt")
   write(doc, name, append = TRUE)
 }
-
 sapply(data, getdoc)
 
 # clearfiy the data 

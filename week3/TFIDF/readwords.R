@@ -1,0 +1,10 @@
+library(tm)
+library(tmcn)
+library(Matrix)
+library(wordcloud)
+
+docs <- readLines("CH1.txt")
+docs.corpus <- Corpus(VectorSource(docs))
+docs.seg <- tm_map(docs.corpus, segmentCN)
+docs.tdm <- TermDocumentMatrix(docs.seg, control = list())
+inspect(docs.tdm)
