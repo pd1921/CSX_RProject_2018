@@ -2,7 +2,9 @@
 title: "TFIDF"
 output: html_document
 ---
+# 分析 PTT_NBA 版
 
+### 載入所需的套件包
 ```{r, message=FALSE}
 library(bitops)
 library(RCurl)
@@ -15,7 +17,7 @@ library(tmcn)
 library(tm)
 ```
 
-
+### 利用上周的程式進行 PTT 網路爬蟲抓出所有文章內文所對應的網址
 ```{r}
 source('pttTestFunction.R')
 id = c(6150:6153)
@@ -44,6 +46,7 @@ data <- unlist(data)
 head(data)
 ```
 
+### 利用所有文章的網址去抓所有文章內文, 並解析出文章的內容並依照 hour 合併儲存。
 ```{r}
 library(dplyr)
 getdoc <- function(url)
@@ -68,6 +71,7 @@ sapply(data, getdoc)
 ```
 
 
+### 建立文本資料結構與基本文字清洗
 ```{r}
 library("tm")
 rm(list=ls(all.names = TRUE))
@@ -121,6 +125,7 @@ d.corpus <- tm_map(d.corpus, stripWhitespace)
 d.corpus
 ```
 
+### 進行斷詞，並依照日期建立文本矩陣 TermDocumentMatrix
 ```{r}
 mixseg = worker()
 jieba_tokenizer = function(d)
@@ -153,6 +158,7 @@ kable(head(TDM))
 kable(tail(TDM))
 ```
 
+### 將已建好的 TDM 轉成 TF-IDF
 ```{r}
 tf <- apply(as.matrix(TDM[,2:(n+1)]), 2, sum)
 
@@ -194,6 +200,7 @@ TDM = TDM[-delID,]
 doc.tfidf = doc.tfidf[-delID,]
 ```
 
+### TF-IDF Hours 文章取得的重要關鍵字
 ```{r}
 TopWords = data.frame()
 for( id in c(1:n) )
@@ -207,6 +214,7 @@ TopWords = droplevels(TopWords)
 kable(TopWords)
 ```
 
+### TF-IDF Hours 文章取得的重要關鍵字 TDM merge 視覺化
 ```{r}
 TDM$d = as.character(TDM$d)
 AllTop = as.data.frame( table(as.matrix(TopWords)) )
@@ -230,6 +238,8 @@ for( t in c(1:TopNo) )
 library(ggplot2)
 ```
 
+* 有關火箭隊的討論在晚上九達到高峰。
+
 ```{r}
 library(varhandle)
 tempGraph$freq = unfactor(tempGraph$freq)
@@ -241,6 +251,7 @@ ggplot(tempGraph, aes(hour, freq)) +
 kable(tail(AllTop))
 ```
 
+### 發文時間與發文量
 ```{r}
 filenames = as.array(paste0("./DATA/",colnames(doc.tfidf)[2:(n+1)],".txt"))
 sizeResult = apply(filenames, 1, file.size) / 1024
@@ -249,3 +260,7 @@ names(showSize) = c("hour", "size_KB")
 
 ggplot(showSize, aes(x = hour, y = size_KB)) + geom_bar(stat="identity")
 ```
+
+* 可以得知大部分的發文集中在早上到中午之間以及晚上接近半夜的時候
+
+![](https://media.fox26houston.com/media.fox26houston.com/photo/2015/09/02/HRockets_1441213870071_151041_ver1.0_640_360.jpg)
