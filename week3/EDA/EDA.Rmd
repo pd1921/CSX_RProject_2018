@@ -41,8 +41,8 @@ full$Title <- gsub('(.*, )|(\\..*)', '', full$Name)
 # Show title counts by sex
 table(full$Sex, full$Title)
 ```
-
-  * 
+<br>
+  * 將稱謂中比較少見的稱謂，簡化為 Rare Title
 ```{r}
 # Titles with very low cell counts to be combined to "rare" level
 rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', 
@@ -57,3 +57,28 @@ full$Title[full$Title %in% rare_title]  <- 'Rare Title'
 # Show title counts by sex again
 table(full$Sex, full$Title)
 ```
+<br>  
+  * 利用 sapply 切割字串，得到姓氏後回傳給 full$Surname
+```{r}
+# Finally, grab surname from passenger name
+full$Surname <- sapply(full$Name,  
+                      function(x) strsplit(x, split = '[,.]')[[1]][1])
+```
+<br><br>
+### Family
+  * 計算家庭大小
+```{r}
+full$Fsize <- full$SibSp + full$Parch + 1
+
+full$Family <- paste(full$Surname, full$Fsize, sep='_')
+```
+<br>
+  * 利用 ggplot 畫出長條圖，用以表達存活人數以及家庭大小的關係
+```{r}
+ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +
+  geom_bar(stat='count', position='dodge') +
+  scale_x_continuous(breaks=c(1:11)) +
+  labs(x = 'Family Size') +
+  theme_few()
+```
+
