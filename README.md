@@ -23,7 +23,7 @@
 ### week3
   * In class
     * [EDA Note](https://pd1921.github.io/CSX_RProject_2018/week3/EDA/EDA.html)
-    * [TFIDF](https://pd1921.github.io/CSX_RProject_2018/week3/TFIDF/TFIDF.html)
+   
   * At home
     * [PCA](https://pd1921.github.io/CSX_RProject_2018/week3/TFIDF/PCA.html)
   
