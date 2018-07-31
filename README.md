@@ -27,4 +27,10 @@
   * At home
     * [TFIDF](https://pd1921.github.io/CSX_RProject_2018/week3/TFIDF/TFIDF.html)
     * [PCA](https://pd1921.github.io/CSX_RProject_2018/week3/TFIDF/PCA.html)
+ 
+ ### week4
+  * In class
+    * Finish Part 1
+  * At home
+    * [Anova](https://pd1921.github.io/CSX_RProject_2018/week4/noon/Anova.html)
   
