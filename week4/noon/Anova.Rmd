@@ -45,11 +45,11 @@ tail(full)
 ```
 
 ### 載入ggplot，準備畫圖
-```{r}
+```{r, message=FALSE}
 library(ggplot2)
 ```
 
-```{r}
+```{r, warning=FALSE}
 #將底下的圖設定為黑白配色（theme_bw）
 old <- theme_set(theme_bw())
 ```
@@ -64,7 +64,7 @@ ggplot(data = full, aes(x = Survived, y = Fare)) +
 ## Part.A 存活率以及票價的關係
 
 ### 先以存活率以及票價畫出盒鬚圖
-```{r}
+```{r, warning=FALSE}
 #以下函式計算95%信賴區間
 full <- na.omit(full)
 with(full, 
@@ -73,12 +73,58 @@ with(full,
        c(mean(x) + c(-2, 2) * sd(x)/sqrt(length(x)))))
 ```
 
-```{r}
+```{r, warning=FALSE}
 #此函數會預設進行 Welch 校正，以處理兩樣本變異數不相同的問題
 t.test(Fare ~ Survived, data = full)
 ```
 
-```{r}
+```{r, warning=FALSE}
 #可加上參數 var.equal=TRUE 來假設變異數同值(不做Welch校正)
 t.test(Fare ~ Survived, data = full, var.equal = TRUE)
+```
+
+## Part.B 
+
+### 觀察登船地點與票價之間的關係
+```{r}
+library(Hmisc)
+
+full$Embarked <- factor(full$Embarked, 
+                       levels = c('S',
+                                  'C',
+                                  'Q'
+                                  ))
+
+tapply(full$Fare, full$Embarked, mean)
+```
+
+
+```{r}
+full <- na.omit(full)
+ggplot(data = full, 
+       aes(x = Embarked, y = Fare)) +
+  stat_summary(fun.data = 'mean_cl_boot', size = 1) +
+  scale_y_continuous(breaks = seq(500, 660, by = 20)) +
+  geom_hline(yintercept = mean(full$Fare) , 
+             linetype = 'dotted') +
+  labs(x = '登入港口', y = '票價') +
+  coord_flip()
+```
+
+```{r}
+full$Fsize <- full$SibSp + full$Parch
+anova(m1 <- lm(Fare ~ Fsize, data = full))
+```
+
+```{r}
+ggplot(data = full, 
+       aes(group = Survived, 
+          y = Fare, x = Fsize)) +
+  geom_point() +
+  stat_smooth(method = 'lm', se = F) +
+  stat_smooth(aes(group = Survived, 
+          y = Fare, x = Fsize), 
+          method = 'lm', se = F) + 
+  facet_grid( . ~  Survived) +
+  labs(x = '家庭', y = '票價')
 ```
