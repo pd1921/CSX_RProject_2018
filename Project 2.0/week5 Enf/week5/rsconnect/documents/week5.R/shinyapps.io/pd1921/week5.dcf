@@ -1,0 +1,12 @@
+name: week5
+title: week5
+username:
+account: pd1921
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 396545
+bundleId: 1523218
+url: https://pd1921.shinyapps.io/week5/
+when: 1533663018.83037
+asMultiple: FALSE
+asStatic: FALSE
