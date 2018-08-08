@@ -112,8 +112,11 @@ ui <- navbarPage(
            tags$img(height = 300, width = 500, src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2RuetU80I2Szh75mh_5Ha_SVqG-GzT_UR0Fg6A5Tf7Ha5sCwDlg")
            ),
   
-  tabPanel("More",
-           tags$h4("何配瑜、袁翊涵、王崧存"))
+  tabPanel("More Information",
+           tags$h1("Date source"),
+           tags$a(href = "https://legacy.baseballprospectus.com/glossary/index.php?mode=viewstat&stat=397", "Baseball Prospectus"),
+           tags$br(),
+           tags$a(href = "http://www.exploredata.net/Downloads/Baseball-Data-Set", "Data")
   )
 # server
 server <- function(input, output, session) {
