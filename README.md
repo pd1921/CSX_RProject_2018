@@ -33,4 +33,11 @@
     * Finish Part 1
   * At home
     * [Anova](https://pd1921.github.io/CSX_RProject_2018/week4/noon/Anova.html)
+   
+ ### week5
+  * In class
+    * Learn Shiny
+    
+ ### Project
+  * [MLB](https://rcatgaze.shinyapps.io/MLBanalysis/)
   
